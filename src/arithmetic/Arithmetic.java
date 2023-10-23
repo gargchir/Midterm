@@ -15,22 +15,24 @@ import static java.time.Clock.system;
  * @author sivagamasrinivasan
  * 
  */
-public class Arithmetic 
-{
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) 
-    {
-       
-        ArithmeticBase r= new ArithmeticBase();
-        Scanner in= new Scanner(System.in);
-        int n= in.nextInt();
-        int m= in.nextInt();
-        double result = r.calculate(m,n);
-        System.out.println("result :" +result); 
-    
+public class Arithmetic {
+    public static void main(String[] args) {
+        ArithmeticBase r = new ArithmeticBase();
+        Scanner in = new Scanner(System.in);
+        
+        // Prompt the user for the operation
+        System.out.println("Enter arithmetic operation to Perform (PLUS, MINUS, TIMES, DIVIDE): ");
+        String operationStr = in.next().toUpperCase();
+        ArithmeticOperation operation = ArithmeticOperation.valueOf(operationStr);
+        
+        // Input the numbers
+        System.out.print("Enter the first number: ");
+        double m = in.nextDouble();
+        System.out.print("Enter the second number: ");
+        double n = in.nextDouble();
+        
+        // Calculate and print the result
+        double result = r.calculate(m, n, operation);
+        System.out.println("Result: " + result);
     }
 }
-
